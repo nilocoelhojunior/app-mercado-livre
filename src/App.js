@@ -1,17 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import style from './assets/styles/app.scss';
 
 import Routes from './routes/routes';
-import { Search } from './components';
 
 function App() {
   return (
     <Router>
-      <Search />
-      <Container>
-        <Routes />
-      </Container>
+      <Routes />
     </Router>
   );
 }

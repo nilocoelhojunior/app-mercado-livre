@@ -1,0 +1,12 @@
+$grid-gutter-width: 32px !default;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import './_colors.sass';
+@import '../../components/Breadcrumb/style.scss';
+@import '../../components/Search/style.scss';
+@import '../../components/ProductList/style.scss';
+
+body {
+  background-color: $light-gray;
+}

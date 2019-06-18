@@ -1,0 +1,26 @@
+.product-list__wrapper-picture{
+  flex: 0 0 180px;
+}
+
+.product-list__picture{
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+}
+
+.product-list__wrapper-info{
+  padding: 16px 16px 16px 0;
+}
+
+.product-list__title{
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+.product-list__description{
+  font-size: 18px;
+}
+
+.product-list__state{
+  font-size: 12;
+}

@@ -4,20 +4,17 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import LogoML from '../../assets/images/LogoML.png';
-import icSearch from '../../assets/images/icSearch.png';
-
 const Search = ({ onClick }) => (
   <div className="searchBar">
     <Container>
       <Row>
-        <Col xs="1"><img src={LogoML} alt="Mercado Livre" /></Col>
+        <Col xs="1"><img src="/static/images/LogoML.png" alt="Mercado Livre" /></Col>
         <Col xs="11">
           <InputGroup>
-            <Input placeholder="Buscar produtos, marcas e muito mais..." />
+            <Input placeholder="Buscar produtos, marcas e muito mais..." className="searchBar__input" />
             <InputGroupAddon addonType="append">
               <Button color="link" type="button" title="Buscar" onClick={onClick}>
-                <img src={icSearch} alt="Buscar" />
+                <img src="/static/images/icSearch.png" alt="Buscar" />
               </Button>
             </InputGroupAddon>
           </InputGroup>

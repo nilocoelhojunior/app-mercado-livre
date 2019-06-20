@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Container, Card, Col, Row, CardBody,
+  Container, Card, CardBody,
 } from 'reactstrap';
 
 import { Breadcrumb, ProductList } from '../../components';
@@ -49,7 +49,7 @@ function SearchResult() {
       <Breadcrumb />
       <Card>
         <CardBody>
-          <ProductList data={data} />
+          <ProductList data={data} onClick={() => {}} />
         </CardBody>
       </Card>
     </Container>

@@ -1,0 +1,10 @@
+$grid-gutter-width: 32px !default;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import './_colors.scss';
+@import './components.scss';
+
+body {
+  background-color: $light-gray;
+}

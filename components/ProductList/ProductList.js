@@ -4,7 +4,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const ProductList = ({ data }) => {
+const ProductList = ({ data, onClick }) => {
   const products = () => data.map(product => (
     <Row key={product.id} className="product-list">
       <Col className="product-list__wrapper-picture">

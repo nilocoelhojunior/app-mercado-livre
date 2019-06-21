@@ -7,7 +7,7 @@
     "bootstrap": "^4.3.1",
     "css-loader": "^1.0.1",
     "express": "^4.17.1",
-    "next": "^8.1.0",
+    "next": "git@github.com:zeit/next.js.git#v8.1.1-canary.54",
     "next-compose-plugins": "^2.2.0",
     "next-routes": "^1.4.2",
     "node-sass": "^4.12.0",
@@ -19,7 +19,7 @@
     "reactstrap": "^8.0.0"
   },
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node server/server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },

@@ -13,4 +13,5 @@
   "prettier.stylelintIntegration": true,
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
+  "emmet.triggerExpansionOnTab": false
 }

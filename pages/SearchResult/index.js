@@ -9,7 +9,7 @@ import { Breadcrumb, ProductList } from '../../components';
 function SearchResult(props) {
   const getData = () => {
     const { data } = props;
-    return data.results ? data.results : [];
+    return data.items ? data.items : [];
   };
 
   return (
@@ -30,13 +30,13 @@ SearchResult.getInitialProps = props => ({ ...props.query });
 
 SearchResult.propTypes = {
   data: PropTypes.shape({
-    results: PropTypes.arrayOf(PropTypes.any),
+    items: PropTypes.arrayOf(PropTypes.any),
   }),
 };
 
 SearchResult.defaultProps = {
   data: {
-    results: [],
+    items: [],
   },
 };
 

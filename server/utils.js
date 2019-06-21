@@ -1,43 +1,85 @@
 const api = require('./api');
 
+const renderResponse = async ({ categories }, { name, value }) => {
+  const me = await api.getMe();
+  return {
+    [name]: value, categories, author: { name: me.first_name, lastname: me.last_name },
+  };
+};
+
+const decimalPart = value => (value % 1).toFixed(2) * 100;
+
 const parseSearch = async (data) => {
-  const { query, paging } = data;
+  const { filters } = data;
+  const categories = filters.find(f => f.id === 'category').values[0].path_from_root.map(p => p.name);
   try {
-    const results = await Promise.all(data.results.map(async (item) => {
+    const items = await Promise.all(data.results.map(async (item) => {
       const {
-        id, title, price: decimals, thumbnail, condition, free, seller,
-        category_id: categoryId,
+        id, title, price, condition,
         currency_id: currencyId,
-        installments: { amount },
         shipping: { free_shipping },
         seller_address,
       } = item;
-      const user = await api.getUser(seller.id);
-      const category = await api.getCategory(categoryId);
       const product = await api.getProduct(id);
       return {
         id,
         title,
         picture: product.pictures[0].url,
-        free,
-        author: { nickname: user.nickname },
-        categories: category.path_from_root,
         condition,
         free_shipping,
         price: {
           currency: currencyId,
-          amount,
-          decimals,
+          amount: price,
+          decimals: decimalPart(price),
         },
         seller_address,
       };
     }));
-    return { query, paging, results };
+    return await renderResponse({ categories }, { name: 'items', value: items });
   } catch (e) {
-    return { query, paging, results: [] };
+    return {
+      items: [], categories: [],
+    };
   }
 };
 
-const parseProduct = (data) => {};
+const parseProduct = async (data) => {
+  try {
+    const {
+      id, title, price, condition, category_id,
+      currency_id: currencyId,
+      shipping: { free_shipping },
+      pictures,
+      sold_quantity,
+    } = data;
 
-module.exports = { parseProduct, parseSearch };
+    const description = await api.getProductDescription(id);
+    const category = await api.getCategory(category_id);
+    const categories = category.path_from_root.map(p => p.name);
+
+    return await renderResponse({ categories }, {
+      name: 'item',
+      value: {
+        id,
+        title,
+        price: {
+          currency: currencyId,
+          amount: price,
+          decimals: decimalPart(price),
+        },
+        picture: pictures[0].url,
+        condition,
+        free_shipping,
+        sold_quantity,
+        description: description.plain_text,
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    return { item: {} };
+  }
+};
+
+module.exports = {
+  parseProduct, parseSearch, renderResponse, decimalPart,
+};

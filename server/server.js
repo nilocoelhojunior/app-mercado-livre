@@ -21,7 +21,13 @@ app.prepare().then(() => {
     app.render(req, res, '/searchResult', { ...req.query, data });
   });
 
-  server.get('/items/:id', (req, res) => app.render(req, res, '/product', req.query));
+  server.get('/items/:id', async (req, res) => {
+    const { id = '' } = req.params;
+    const product = await api.getProduct(id);
+    const data = await utils.parseProduct(product);
+
+    app.render(req, res, '/product', { ...req.query, data });
+  });
 
   server.get('*', (req, res) => handle(req, res));
 

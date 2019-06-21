@@ -13,7 +13,7 @@ const Search = ({ onClick }) => {
   };
 
   return (
-    <div className="searchBar">
+    <header className="searchBar">
       <Container>
         <Row>
           <Col xs="1"><img src="/static/images/LogoML.png" alt="Mercado Livre" /></Col>
@@ -29,7 +29,7 @@ const Search = ({ onClick }) => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </header>
   );
 };
 

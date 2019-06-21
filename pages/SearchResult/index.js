@@ -15,11 +15,13 @@ function SearchResult(props) {
   return (
     <Container>
       <Breadcrumb />
-      <Card>
-        <CardBody>
-          <ProductList data={getData()} onClick={() => {}} />
-        </CardBody>
-      </Card>
+      <article>
+        <Card>
+          <CardBody>
+            <ProductList data={getData()} />
+          </CardBody>
+        </Card>
+      </article>
     </Container>
   );
 }

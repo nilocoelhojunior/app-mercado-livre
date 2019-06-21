@@ -6,6 +6,9 @@
   width: 180px;
   height: 180px;
   border-radius: 4px;
+  &:hover{
+    box-shadow: 0 0 5px $primary;
+  }
 }
 
 .product-list__wrapper-info{
@@ -28,4 +31,8 @@
 
 .product-list__state{
   font-size: 12;
+}
+
+.product-list__link{
+  color: $dark;
 }

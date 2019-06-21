@@ -23,7 +23,9 @@ class MyApp extends App {
     return (
       <Container>
         <Search onClick={search => Router.push(`/items?search=${search}`)} />
-        <Component {...pageProps} />
+        <main>
+          <Component {...pageProps} />
+        </main>
       </Container>
     );
   }

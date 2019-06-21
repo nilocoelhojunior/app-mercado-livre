@@ -12,6 +12,10 @@ const Search = ({ onClick }) => {
     onClick(search);
   };
 
+  const handleKeyPress = (event) => {
+    console.log(event);
+  };
+
   return (
     <header className="searchBar">
       <Container>
@@ -19,7 +23,12 @@ const Search = ({ onClick }) => {
           <Col xs="1"><img src="/static/images/LogoML.png" alt="Mercado Livre" /></Col>
           <Col xs="11">
             <InputGroup>
-              <Input onChange={event => setSearch(event.target.value)} placeholder="Buscar produtos, marcas e muito mais..." className="searchBar__input" />
+              <Input
+                onChange={event => setSearch(event.target.value)}
+                placeholder="Buscar produtos, marcas e muito mais..."
+                className="searchBar__input"
+                onKeyPress={handleKeyPress}
+              />
               <InputGroupAddon addonType="append">
                 <Button color="link" type="button" title="Buscar" onClick={handerClick}>
                   <img src="/static/images/icSearch.png" alt="Buscar" />

@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "css-loader": "^1.0.1",
     "express": "^4.17.1",
+    "lodash": "^4.17.11",
     "next": "git@github.com:zeit/next.js.git#v8.1.1-canary.54",
     "next-compose-plugins": "^2.2.0",
     "next-routes": "^1.4.2",

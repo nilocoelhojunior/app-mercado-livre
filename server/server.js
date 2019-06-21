@@ -23,10 +23,14 @@ app.prepare().then(() => {
 
   server.get('/items/:id', async (req, res) => {
     const { id = '' } = req.params;
-    const product = await api.getProduct(id);
-    const data = await utils.parseProduct(product);
+    try {
+      const product = await api.getProduct(id);
+      const data = await utils.parseProduct(product);
 
-    app.render(req, res, '/product', { ...req.query, data });
+      app.render(req, res, '/product', { ...req.query, data });
+    } catch (e) {
+      app.render(req, res, '/product', { ...req.query });
+    }
   });
 
   server.get('*', (req, res) => handle(req, res));

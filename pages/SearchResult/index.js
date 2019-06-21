@@ -18,14 +18,19 @@ function SearchResult(props) {
     return search ? `${search.toLocaleUpperCase()} no Mercado Livre` : 'Mercado Livre';
   };
 
+  const renderEmpty = () => (
+    <h1>Nenhum produto encontrado</h1>
+  );
+
   return (
     <Layout title={getPageTitle()}>
       <Container>
-        <Breadcrumb />
+        <Breadcrumb data={props.data.categories} />
         <article>
           <Card>
             <CardBody>
-              <ProductList data={getData()} />
+              {getData().length > 0 ? <ProductList data={getData()} /> : renderEmpty()}
+
             </CardBody>
           </Card>
         </article>

@@ -7,7 +7,7 @@ import {
 import { Breadcrumb, Layout } from '../../components';
 
 function Product(props) {
-  const { data: { item } } = props;
+  const { data: { item, categories } } = props;
 
   const renderDecimalPart = (value) => {
     if (value < 9) {
@@ -17,7 +17,7 @@ function Product(props) {
   };
 
   const renderDescription = description => description.split('\n').map(text => (
-    <React.Fragment key={`${text}-${Date.now()}`}>
+    <React.Fragment key={`${Math.random()}-${Date.now()}`}>
       {text}
       <br />
     </React.Fragment>
@@ -25,10 +25,10 @@ function Product(props) {
 
   const getDescription = () => `${item.title} por ${item.price.amount.toLocaleString('pt-BR')},${renderDecimalPart(item.price.decimals)}`;
 
-  return (
+  const renderProduct = () => (
     <Layout title={item.title} description={getDescription()} picture={item.picture}>
       <Container>
-        <Breadcrumb />
+        <Breadcrumb data={categories} />
         <Card>
           <CardBody className="product">
             <Row noGutters>
@@ -67,6 +67,21 @@ function Product(props) {
       </Container>
     </Layout>
   );
+
+  const renderEmptyProduct = () => (
+    <Layout>
+      <Container>
+        <Breadcrumb />
+        <Card>
+          <CardBody className="product">
+            <h1>Produto não encontrado! Tente novamente</h1>
+          </CardBody>
+        </Card>
+      </Container>
+    </Layout>
+  );
+
+  return !item ? renderProduct() : renderEmptyProduct();
 }
 
 Product.getInitialProps = props => ({ ...props.query });

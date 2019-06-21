@@ -11,8 +11,8 @@ const decimalPart = value => (value % 1).toFixed(2) * 100;
 
 const parseSearch = async (data) => {
   const { filters } = data;
-  const categories = filters.find(f => f.id === 'category').values[0].path_from_root.map(p => p.name);
   try {
+    const categories = filters.find(f => f.id === 'category').values[0].path_from_root.map(p => p.name);
     const items = await Promise.all(data.results.map(async (item) => {
       const {
         id, title, price, condition,
@@ -75,7 +75,6 @@ const parseProduct = async (data) => {
       },
     });
   } catch (e) {
-    console.log(e);
     return { item: {} };
   }
 };

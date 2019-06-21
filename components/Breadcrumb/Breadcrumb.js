@@ -1,16 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Breadcrumb as BSBreadcrumb, BreadcrumbItem } from 'reactstrap';
 
-function Breadcrumb() {
+function Breadcrumb({ data }) {
+  const renderItem = () => data.map((item, index) => <BreadcrumbItem key={item} active={index - 1 === data.length} tag="a" href="#">{item}</BreadcrumbItem>);
+
   return (
     <BSBreadcrumb tag="nav" listTag="div">
-      <BreadcrumbItem tag="a" href="#">Eletrônica, Áudio de Vídeo</BreadcrumbItem>
-      <BreadcrumbItem tag="a" href="#">iPod</BreadcrumbItem>
-      <BreadcrumbItem tag="a" href="#">Players</BreadcrumbItem>
-      <BreadcrumbItem tag="a" href="#">iPod Touch</BreadcrumbItem>
-      <BreadcrumbItem active tag="span">32gb</BreadcrumbItem>
+      {renderItem()}
     </BSBreadcrumb>
   );
 }
+
+Breadcrumb.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.string),
+};
+
+Breadcrumb.defaultProps = {
+  data: [],
+};
+
 
 export default Breadcrumb;

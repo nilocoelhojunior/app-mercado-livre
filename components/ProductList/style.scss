@@ -12,12 +12,17 @@
   padding: 16px 16px 16px 0;
 }
 
-.product-list__title{
+.product-list__price{
   font-size: 24px;
   margin-bottom: 32px;
+  font-weight: normal;
 }
 
-.product-list__description{
+.product-list__currency{  
+  margin-right: 5px;
+}
+
+.product-list__title{
   font-size: 18px;
 }
 

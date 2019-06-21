@@ -8,18 +8,18 @@ const ProductList = ({ data, onClick }) => {
   const products = () => data.map(product => (
     <Row key={product.id} className="product-list">
       <Col className="product-list__wrapper-picture">
-        <div className="product-list__picture" style={{ background: `#eeeeee url(${product.picture}) center center / cover` }} />
+        <div className="product-list__picture" style={{ background: `#eeeeee url(${product.picture}) center center / contain no-repeat` }} />
       </Col>
       <Col className="product-list__wrapper-info">
         <Row noGutters>
           <Col>
-            <p className="product-list__title">
-              R$
-              {product.price}
-            </p>
-            <p className="product-list__description">{product.description}</p>
+            <h2 className="product-list__price">
+              <span className="product-list__currency">$</span>
+              {product.price.decimals.toLocaleString('pt-BR')}
+            </h2>
+            <h1 className="product-list__title">{product.title}</h1>
           </Col>
-          <Col xs="3"><p className="product-list__state">{product.state}</p></Col>
+          <Col xs="3"><p className="product-list__state">{product.seller_address.state.name}</p></Col>
         </Row>
       </Col>
       <Col xs="12"><hr /></Col>

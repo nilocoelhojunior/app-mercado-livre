@@ -1,6 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Router from 'next/router';
+import { Router } from '../routes';
 
 import '../style/index.scss';
 
@@ -22,7 +22,7 @@ class MyApp extends App {
 
     return (
       <Container>
-        <Search onClick={() => Router.push('/search-result')} />
+        <Search onClick={search => Router.push(`/items?search=${search}`)} />
         <Component {...pageProps} />
       </Container>
     );

@@ -1,8 +1,12 @@
 import React from 'react';
+import Head from 'next/head';
+import { Layout } from '../../components';
 
 function Home() {
   return (
-    <div className="App" />
+    <Layout>
+      <div />
+    </Layout>
   );
 }
 

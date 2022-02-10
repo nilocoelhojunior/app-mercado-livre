@@ -12,7 +12,7 @@
     "next": "git@github.com:zeit/next.js.git#v8.1.1-canary.54",
     "next-compose-plugins": "^2.2.0",
     "next-routes": "^1.4.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.7.2",
     "raw-loader": "^3.0.0",
     "react": "^16.8.6",
